@@ -3,7 +3,9 @@ var JSMath =  new function(){
         Add : addVectors,
         FindNegative : findNegative,
         Scale: scaleVector,
-        AreEquivalent : areEquivalent
+        AreEquivalent : areEquivalent,
+        FindNorm : findNorm,
+        FindUnitVector : findUnitVector
     }
 
     function addVectors(vector1, vector2) {
@@ -68,6 +70,37 @@ var JSMath =  new function(){
                 result = false;
                 break;
             }
+        }
+
+        return result;
+    }
+
+    function findNorm(vector) {
+        if (!vector)
+            throw("Invalid vector parameters");
+
+        var result = 0;
+
+        for (var i =0; i< vector.length; i++)
+            result += Math.pow(vector[i], 2);
+
+        return Math.sqrt(result);
+    }
+
+    function findUnitVector(vector) {
+        if (!vector)
+            throw("Invalid vector parameters");
+
+        var result = [];
+        var norm = 0;
+
+        for (var i =0; i< vector.length; i++)
+            norm += Math.pow(vector[i], 2);
+
+        norm = Math.sqrt(norm);
+        
+        for (var i = 0; i < vector.length; i++) {
+            result.push((1/norm) * vector[i]);
         }
 
         return result;

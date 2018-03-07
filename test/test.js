@@ -57,4 +57,22 @@ describe('Vectors', function(){
             assert.deepEqual(false, result);
         });
      });
+
+     describe('#VectorsFindNorm()', function(){
+        it ('should return 5', function(){
+            var v1 = [3,4];
+            var result = JSMath.Vector.FindNorm(v1);
+ 
+            assert.equal(5, result);
+        });
+     });
+
+     describe('#VectorsFindUnitVector()', function(){
+        it ('should return [0.6666666666666666,0.6666666666666666,-0.3333333333333333]', function(){
+            var v1 = [2,2,-1];
+            var result = JSMath.Vector.FindUnitVector(v1);
+ 
+            assert.deepEqual([0.6666666666666666,0.6666666666666666,-0.3333333333333333], result);
+        });
+     });
 });
